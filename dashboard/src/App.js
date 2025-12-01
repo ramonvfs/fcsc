@@ -5,7 +5,7 @@ import FFTChart from "./components/FFTChart";
 import DistanceCard from "./components/DistanceCard";
 
 function App() {
-  const { accelData, fftData, distance, status } = useFFTWebSocket("ws://localhost:8080/ws/fft_data");
+  const { accelData, fftData, distance, status, statusFFT } = useFFTWebSocket("ws://localhost:8080/ws/fft_data");
 
   return (
     <div className="App">
@@ -18,7 +18,7 @@ function App() {
         </div>
 
         <div className="chart-card">
-          <FFTChart fftData={fftData} />
+          <FFTChart fftData={fftData} statusFFT={statusFFT}/>
         </div>
       </div>
     </div>

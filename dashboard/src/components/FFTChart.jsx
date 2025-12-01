@@ -1,6 +1,6 @@
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from "recharts";
 
-export default function FFTChart({ fftData }) {
+export default function FFTChart({ fftData, statusFFT }) {
   const maxLength = Math.max(
     fftData.X?.frequencies?.length || 0,
     fftData.Y?.frequencies?.length || 0,
@@ -16,6 +16,18 @@ export default function FFTChart({ fftData }) {
 
   return (
     <div>
+      <div style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "40px",   // espaço entre os cards
+          marginBottom: "15px",
+          fontSize: "18px"
+          // fontWeight: "bold"
+        }}> Status:
+        <div>X: {statusFFT.X === "normal" ? "🟢" : "🔴"}</div>
+        <div>Y: {statusFFT.Y === "normal" ? "🟢" : "🔴"}</div>
+        <div>Z: {statusFFT.Z === "normal" ? "🟢" : "🔴"}</div>
+      </div>
       <h2>FFT (X, Y, Z)</h2>
       <LineChart width={800} height={300} data={data}>
         <Line type="monotone" dataKey="X" stroke="red" dot={false} />

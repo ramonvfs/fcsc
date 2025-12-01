@@ -29,7 +29,8 @@ def fft_publisher_callback(axis_name: str, signal: list, distance: int):
             "frequencies": frequencies.tolist(),
             "magnitudes": magnitudes.tolist(),
             "distance": distance,
-            "status_distance": status_distance
+            "status_distance": status_distance,
+            "status_fft": "normal" if np.max(magnitudes) < 0.040 else "alerta"
         }
 
         asyncio.run(manager.send_fft_result(data_to_send))

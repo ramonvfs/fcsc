@@ -5,6 +5,7 @@ export function useFFTWebSocket(wsUrl) {
   const [fftData, setFFTData] = useState({ X: null, Y: null, Z: null });
   const [distance, setDistance] = useState(0);
   const [status, setStatus] = useState("normal");
+  const [statusFFT, setStatusFFT] = useState({ X: "normal", Y: "normal", Z: "normal" });
   useEffect(() => {
     const ws = new WebSocket(wsUrl);
 
@@ -20,6 +21,13 @@ export function useFFTWebSocket(wsUrl) {
         setStatus(data.status_distance);
       }
 
+      if (data.status_fft) {
+        setStatusFFT(prev => ({
+        ...prev,
+          [axis]: data.status_fft
+        }));
+      }
+      
       const axis = data.axis;
       if (!["X", "Y", "Z"].includes(axis)) return;
 
@@ -46,5 +54,5 @@ export function useFFTWebSocket(wsUrl) {
     return () => ws.close();
   }, [wsUrl]);
 
-  return { accelData, fftData, distance, status };
+  return { accelData, fftData, distance, status, statusFFT };
 }
