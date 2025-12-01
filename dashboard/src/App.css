@@ -54,3 +54,45 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   background: white;
 }
+
+.distance-card {
+  width: 300px;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.distance-card h2 {
+  margin-bottom: 12px;
+}
+
+.distance-value {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.distance-value.normal {
+  color: #2ecc71; 
+}
+
+.distance-value.alerta {
+  color: #e74c3c;
+}
+
+.distance-status {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.distance-status.normal {
+  color: #2ecc71;
+}
+
+.distance-status.alerta {
+  color: #e74c3c;
+}
+
